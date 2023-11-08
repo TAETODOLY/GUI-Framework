@@ -22,4 +22,7 @@
    - "Microsoft.Extensions.Configuration"
    - "Microsoft.Extensions.Configuration.Json"
    - "Microsoft.Extensions.Configuration.Binder"
+   - "DotNetSeleniumExtras.WaitHelpers"
+	- "Specflow"
+	- "SpecFlow.Tools.MsBuild.Generation"
 1. 

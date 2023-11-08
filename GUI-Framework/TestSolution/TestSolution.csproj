@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
@@ -18,17 +19,21 @@
     <PackageReference Include="NUnit.Analyzers" Version="3.3.0" />
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
     <PackageReference Include="Selenium.WebDriver" Version="4.15.0" />
+    <PackageReference Include="SpecFlow" Version="3.9.74" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.74" />
     <PackageReference Include="WebDriverManager" Version="2.17.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="StepDefinitios\" />
-    <Folder Include="Hooks\" />
     <Folder Include="PageObjects\" />
     <Folder Include="Models\" />
-    <Folder Include="Configurations\" />
-    <Folder Include="Features\" />
     <Folder Include="TestData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConfigurationProvider\ConfigurationProvider.csproj" />
+    <ProjectReference Include="..\WebDriverProvider\WebDriverProvider.csproj" />
   </ItemGroup>
 
 </Project>
