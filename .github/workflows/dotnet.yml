@@ -22,8 +22,8 @@ jobs:
         dotnet-version: 6.0.x
     - name: Selenium docker grid setup
       run: |
-        docker-compose -f 1.Core/Docker/hub.yml up -d
-        docker-compose -f 1.Core/Docker/Chrome.yml up -d
+        docker-compose -f ConfigurationProvider\Docker\hub.yml up -d
+        docker-compose -f ConfigurationProvider\Docker\Chrome.yml up -d
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -33,6 +33,6 @@ jobs:
     - name: End docker sessions
       if: always()
       run: |
-        docker-compose -f 1.Core/Docker/hub.yml stop
-        docker-compose -f 1.Core/Docker/${DriverType}.yml down --remove-orphans
+        docker-compose -f ConfigurationProvider\Docker\hub.yml stop
+        docker-compose -f ConfigurationProvider\Docker\Chrome.yml down --remove-orphans
         docker container prune
