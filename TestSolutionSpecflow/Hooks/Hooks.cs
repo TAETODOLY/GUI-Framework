@@ -14,11 +14,11 @@ namespace TestSolution.Hooks
         {
             if (Environment.GetEnvironmentVariable("GITHUB_ACTIONS") == "true")
             {
-                _webDriverConfigurationJson = "Configurations\\RemoteChromeDriverConfiguration.json";
+                _webDriverConfigurationJson = "Configurations//RemoteChromeDriverConfiguration.json";
             }
             else
             {
-                _webDriverConfigurationJson = "Configurations\\RemoteChromeDriverConfiguration.json";
+                _webDriverConfigurationJson = "Configurations//ChromeDriverConfiguration.json";
             }
         }
 
