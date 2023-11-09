@@ -8,7 +8,7 @@ namespace TestSolution.Hooks
     [Binding]
     public sealed class Hooks
     {
-        private const string _webDriverConfigurationJson = "Configurations\\ChromeDriverConfiguration.json";
+        private const string _webDriverConfigurationJson = "Configurations\\RemoteChromeDriverConfiguration.json";
 
         [BeforeScenario]
         public void BeforeScenario(ScenarioContext scenarioContext)
