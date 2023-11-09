@@ -9,6 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigurationProvider", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSolution", "TestSolutionSpecflow\TestSolution.csproj", "{6EBEF1B4-2358-4FD4-AA5F-EA8D3737FF17}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{AA3D8AF3-3EAA-4A2F-92E6-998B607524E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Worfkflows", "Worfkflows", "{61A38EAF-101C-4C7D-85E4-8E3045B11AA1}"
+	ProjectSection(SolutionItems) = preProject
+		Main.yml = Main.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +37,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61A38EAF-101C-4C7D-85E4-8E3045B11AA1} = {AA3D8AF3-3EAA-4A2F-92E6-998B607524E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAFA0A37-D849-4C8B-9CB5-5DFA4BD6130D}
