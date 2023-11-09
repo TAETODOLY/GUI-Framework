@@ -10,7 +10,7 @@ namespace TestSolution.StepDefinitions
     [Binding]
     public class LoginTests
     {
-        private const string _newUserDataJson = "\\TestData\\NewUserData.json";
+        private const string _newUserDataJson = "//TestData//NewUserData.json";
 
         private readonly ScenarioContext _scenarioContext;
         private readonly WebDriverFactory _factory;
