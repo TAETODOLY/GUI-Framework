@@ -2,6 +2,7 @@
 {
     public enum Browser
     {
+        RemoteChrome,
         Chrome,
         HeadlessChrome,
         Edge,

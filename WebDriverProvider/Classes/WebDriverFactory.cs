@@ -6,6 +6,7 @@ using WebDriverProvider.Enums;
 using WebDriverProvider.Interfaces;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
+using OpenQA.Selenium.Remote;
 
 namespace WebDriverProvider.Classes;
 public class WebDriverFactory
@@ -42,6 +43,7 @@ public class WebDriverFactory
     {
         IWebDriver webDriver = _configuration.Browser switch
         {
+            Browser.RemoteChrome => InstantiateRemoteChromeDriver(true, "http://your-selenium-grid-hub-address:4444/wd/hub"),
             Browser.Chrome => InstantiateChromeDriver(false),
             Browser.HeadlessChrome => InstantiateChromeDriver(true),
             Browser.Firefox => InstantiateFirefoxDriver(false),
@@ -50,6 +52,21 @@ public class WebDriverFactory
             Browser.HeadlessEdge => InstantiateEdgeDriver(true),
             _ => InstantiateChromeDriver(false),
         };
+        return webDriver;
+    }
+
+    private IWebDriver InstantiateRemoteChromeDriver(bool isHeadless, string seleniumGridUrl)
+    {
+        var chromeOptions = new ChromeOptions();
+
+        if (isHeadless)
+        {
+            chromeOptions.AddArgument("--headless");
+        }
+        var capabilities = chromeOptions.ToCapabilities();
+
+        var webDriver = new RemoteWebDriver(new Uri(seleniumGridUrl), capabilities);
+
         return webDriver;
     }
 
