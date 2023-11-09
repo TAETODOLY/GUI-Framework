@@ -1,5 +1,4 @@
 ﻿using ConfigurationProvider.Classes;
-using TechTalk.SpecFlow;
 using WebDriverProvider.Classes;
 using WebDriverProvider.Configurations;
 
