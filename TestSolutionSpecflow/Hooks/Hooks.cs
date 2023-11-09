@@ -8,7 +8,19 @@ namespace TestSolution.Hooks
     [Binding]
     public sealed class Hooks
     {
-        private const string _webDriverConfigurationJson = "Configurations\\RemoteChromeDriverConfiguration.json";
+        private readonly string _webDriverConfigurationJson;
+
+        public Hooks()
+        {
+            if (Environment.GetEnvironmentVariable("GITHUB_ACTIONS") == "true")
+            {
+                _webDriverConfigurationJson = "Configurations\\RemoteChromeDriverConfiguration.json";
+            }
+            else
+            {
+                _webDriverConfigurationJson = "Configurations\\RemoteChromeDriverConfiguration.json";
+            }
+        }
 
         [BeforeScenario]
         public void BeforeScenario(ScenarioContext scenarioContext)

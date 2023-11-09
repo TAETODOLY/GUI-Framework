@@ -38,6 +38,9 @@
     <None Update="Configurations\HeadlessFirefoxDriverConfiguration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Configurations\RemoteChromeDriverConfiguration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\NewUserData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
