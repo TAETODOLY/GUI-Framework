@@ -1,4 +1,5 @@
-﻿using WebDriverProvider.Extensions;
+﻿using TestSolution.Models;
+using WebDriverProvider.Extensions;
 
 namespace TestSolution.PageObjects
 {
@@ -16,31 +17,35 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to click the Sign Up Button. {e.Message}.", e.InnerException);
             }
         }
-        //private void ClearFirstNameTextBox()
-        //{
-        //    try
-        //    {
-        //        _driverFactory.WaitFluentlyForElementToBeVisible(_firstNameTextBoxLocator, _driverFactory.Configuration.LongWait);
+        private void ClickLogin()
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeClickable(_loginButton, _driverFactory.Configuration.LongWait);
+                LoginButton.Click();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to click the Log In Button. {e.Message}.", e.InnerException);
+            }
+        }
+        private void LoginCredentials(User user)
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_emailTextBox, _driverFactory.Configuration.LongWait);
+                EmailTextBox.SendKeys(user.Email);
 
-        //        FirstNameTextBox.Clear();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new Exception($"Unable to clear the First Name textbox. {e.Message}.", e.InnerException);
-        //    }
-        //}
+                _driverFactory.WaitFluentlyForElementToBeVisible(_passwordTextBox, _driverFactory.Configuration.LongWait);
+                PasswordTextBox.SendKeys(user.Password);
 
-        //public void EnterFirstName(string firstName)
-        //{
-        //    try
-        //    {
-        //        ClearFirstNameTextBox();
-        //        FirstNameTextBox.SendKeys(firstName);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new Exception($"Unable to enter '{nameof(firstName)}' into the First Name Textbox. {e.Message}", e.InnerException);
-        //    }
-        //}
+                _driverFactory.WaitFluentlyForElementToBeClickable(_loginFinalButton, _driverFactory.Configuration.LongWait);
+                LoginFinalButton.Click();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to Log In with Given Credentials. {e.Message}.", e.InnerException);
+            }
+        }
     }
 }

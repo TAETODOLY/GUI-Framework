@@ -20,5 +20,13 @@ namespace TestSolution.PageObjects
 
             ClickSignUp();
         }
+        public void LoginUser(User user)
+        {
+            if (user is null)
+                throw new ArgumentNullException(nameof(user));
+
+            ClickLogin();
+            LoginCredentials(user);
+        }
     }
 }
