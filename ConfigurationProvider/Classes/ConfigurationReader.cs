@@ -10,7 +10,7 @@ namespace ConfigurationProvider.Classes
             if (string.IsNullOrWhiteSpace(filePath))
                 throw new ArgumentException($"'{nameof(filePath)}' cannot be null or whitespace.", nameof(filePath));
             if (!File.Exists(filePath))
-                throw new FileNotFoundException($"{nameof(filePath)} {filePath} does not exist.", nameof(filePath));
+                throw new FileNotFoundException($"{nameof(filePath)} does not exist.", nameof(filePath));
 
             _root = new ConfigurationBuilder().AddJsonFile(filePath, false, true).Build();
         }
