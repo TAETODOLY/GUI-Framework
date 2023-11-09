@@ -1,11 +1,11 @@
 {
   "adminuser": {
-    "FullName": "Luis Felipe Reyes Ramirez",
+    "FullName": "Luis Jorge Chavez Cernas",
     "Email": "ljorchavez@gmail.com",
     "Password": "123qwe"
   },
   "guestuser": {
-    "FullName": "Luis Jorge Chavez Cernas",
+    "FullName": "Luis Felipe Reyes Ramirez",
     "Email": "guestuser@todoly.com",
     "Password": "Todo.ly#123"
   }
