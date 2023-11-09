@@ -1,5 +1,5 @@
 ﻿Feature: Login into the app
-Login into todo.ly app
+Login into todo.ly app and assert
 
 Scenario: Succesfully Login as User
 	Given the user logs in to the baseURL as "adminuser"
