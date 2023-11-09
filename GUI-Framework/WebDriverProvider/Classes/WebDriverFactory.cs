@@ -165,7 +165,7 @@ public class WebDriverFactory
     }
 
     // Creating methods for the driver
-    public void NavigateToUrl()
+    public void NavigateToBaseUrl()
     {
         _webDriver.Navigate().GoToUrl(_configuration.BaseUrl);
     }

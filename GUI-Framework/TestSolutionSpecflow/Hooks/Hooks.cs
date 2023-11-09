@@ -16,6 +16,7 @@ namespace TestSolution.Hooks
             var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _webDriverConfigurationJson);
             var configuration = configurationReader.GetConfiguration<WebDriverConfiguration>();
             var factory = new WebDriverFactory(configuration);
+            factory.NavigateToBaseUrl();
 
             scenarioContext["DriverFactory"] = factory;
         }

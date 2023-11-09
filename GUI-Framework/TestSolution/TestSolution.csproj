@@ -25,28 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="StepDefinitios\" />
-    <Folder Include="TestData\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ConfigurationProvider\ConfigurationProvider.csproj" />
     <ProjectReference Include="..\WebDriverProvider\WebDriverProvider.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Configurations\ChromeDriverConfiguration.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Configurations\FirefoxDriverConfiguration.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Configurations\HeadlessChromeDriverConfiguration.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Configurations\HeadlessFirefoxDriverConfiguration.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

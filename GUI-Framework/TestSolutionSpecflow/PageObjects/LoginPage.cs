@@ -13,12 +13,12 @@ namespace TestSolution.PageObjects
             _driverFactory = driverFactory;
             _driver = _driverFactory.GetInstanceOf();
         }
-        public void LoginUser(User user)
+        public void RegisterUser(User user)
         {
             if (user is null)
                 throw new ArgumentNullException(nameof(user));
 
-            EnterFirstName(user.FirstName);
+            ClickSignUp();
         }
     }
 }
