@@ -43,7 +43,7 @@ public class WebDriverFactory
     {
         IWebDriver webDriver = _configuration.Browser switch
         {
-            Browser.RemoteChrome => InstantiateRemoteChromeDriver(true, "http://your-selenium-grid-hub-address:4444/wd/hub"),
+            Browser.RemoteChrome => InstantiateRemoteChromeDriver("http://localhost:4444/"),
             Browser.Chrome => InstantiateChromeDriver(false),
             Browser.HeadlessChrome => InstantiateChromeDriver(true),
             Browser.Firefox => InstantiateFirefoxDriver(false),
@@ -55,14 +55,10 @@ public class WebDriverFactory
         return webDriver;
     }
 
-    private IWebDriver InstantiateRemoteChromeDriver(bool isHeadless, string seleniumGridUrl)
+    private IWebDriver InstantiateRemoteChromeDriver(string seleniumGridUrl)
     {
         var chromeOptions = new ChromeOptions();
 
-        if (isHeadless)
-        {
-            chromeOptions.AddArgument("--headless");
-        }
         var capabilities = chromeOptions.ToCapabilities();
 
         var webDriver = new RemoteWebDriver(new Uri(seleniumGridUrl), capabilities);
