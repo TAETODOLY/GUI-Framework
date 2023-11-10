@@ -34,7 +34,7 @@ jobs:
     - name: Test with Allure
       run: dotnet test TestSolutionSpecflow --no-build --no-restore
     - name: Allure Report action from marketplace
-      uses: simple-elf/allure-report-publisher@v1
+      uses: simple-elf/allure-report-action@master
       if: always()
       id: allure-report
       with:
