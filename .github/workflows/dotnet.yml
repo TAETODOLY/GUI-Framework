@@ -56,9 +56,17 @@ jobs:
       env:
         Pgithub_token: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: allure-history
+        publish_dir: ./allure-report
         force_orphan: true
+        keep_files: true
 
+
+    # - name: Deploy to GitHub Pages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./allure-report
+    #     keep_files: true
     - name: End docker sessions
       if: always()
       run: |
