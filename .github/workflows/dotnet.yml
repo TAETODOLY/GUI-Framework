@@ -38,8 +38,6 @@ jobs:
         sudo apt-get install -y allure
     - name: Build
       run: dotnet build --no-restore
-    - name: Install Allure Commandline
-      run: sudo apt-get install allure
     - name: Test with Allure
       run: dotnet test --no-build --no-restore
     - name: Generate Allure Report
