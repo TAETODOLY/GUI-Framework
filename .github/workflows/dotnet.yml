@@ -9,10 +9,6 @@ on:
   pull_request:
     branches: [ "*" ]
 
-permissions:
-  contents: read
-  pages: write
-
 jobs:
   build:
 
