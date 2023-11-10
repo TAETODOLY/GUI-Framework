@@ -1,4 +1,5 @@
-﻿using ConfigurationProvider.Classes;
+﻿using Allure.Net.Commons;
+using ConfigurationProvider.Classes;
 using WebDriverProvider.Classes;
 using WebDriverProvider.Configurations;
 
@@ -8,6 +9,7 @@ namespace TestSolution.Hooks
     public sealed class Hooks
     {
         private readonly string _webDriverConfigurationJson;
+        public static AllureLifecycle allure = AllureLifecycle.Instance;
 
         public Hooks()
         {
@@ -19,6 +21,11 @@ namespace TestSolution.Hooks
             {
                 _webDriverConfigurationJson = "Configurations//ChromeDriverConfiguration.json";
             }
+        }
+        [BeforeTestRun]
+        public static void BeforeTestRun()
+        {
+            allure.CleanupResultDirectory();
         }
 
         [BeforeScenario]
