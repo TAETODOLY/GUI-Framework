@@ -31,8 +31,17 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --no-restore
+    - name: Install Allure Commandline
+      run: sudo apt-get install allure
+    - name: Test with Allure
+      run: dotnet test --no-build --no-restore --logger:"allure;allure-results-directory=allure-results"
+    - name: Generate Allure Report
+      run: allure generate allure-results --clean -o allure-report
+    - name: Publish Allure Report
+      uses: simple-elf/allure-report-publisher@v1
+      with:
+        allure_results: allure-results
+        allure_report: allure-report
     - name: End docker sessions
       if: always()
       run: |
