@@ -2,7 +2,7 @@
 
 namespace TestSolution.Models
 {
-    public  class User
+    public class User
     {
         [ConfigurationKeyName("Email")]
         public string Email { get; set; }
