@@ -16,7 +16,7 @@ namespace TestSolution.Hooks
         private readonly ScenarioContext _scenarioContext;
         private readonly string _webDriverConfigurationJson;
         public static AllureLifecycle allure = AllureLifecycle.Instance;
-        private const string _newUserDataJson = "//Configurations//RestHelperConfigurations.json";
+        private const string _newUserDataJson = "//Configurations//ResthelperConfigurations.json";
 
         public Hooks(ScenarioContext scenarioContext)
         {
