@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace GUITestSolution.Models
+namespace TestSolution.Models
 {
-    public class RestConfig
+    public class User
     {
         [ConfigurationKeyName("Email")]
         public string Email { get; set; }
@@ -10,15 +10,12 @@ namespace GUITestSolution.Models
         public string Password { get; set; }
         [ConfigurationKeyName("FullName")]
         public string FullName { get; set; }
-        [ConfigurationKeyName("Url")]
-        public string Url { get; set; }
 
-        public RestConfig()
+        public User()
         {
             Email = string.Empty;
             Password = string.Empty;
             FullName = string.Empty;
-            Url = string.Empty;
         }
     }
 }

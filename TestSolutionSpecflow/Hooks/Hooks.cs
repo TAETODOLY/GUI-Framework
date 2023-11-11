@@ -2,9 +2,10 @@
 using ConfigurationProvider.Classes;
 using Helpers.Classes;
 using WebDriverProvider.Classes;
-using GUITestSolution.Models;
 using WebDriverProvider.Configurations;
 using RestSharp;
+using TestSolution.Models;
+using System.Text.Json;
 
 namespace TestSolution.Hooks
 {
@@ -94,6 +95,30 @@ namespace TestSolution.Hooks
                 }
             }
         }
+        [AfterTestRun]
+        public static void CleanUp()
+        {
+            RemoveAllprojects();
+        }
 
+        public static void RemoveAllprojects()
+        {
+            var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _newUserDataJson);
+            var RestConfig = configurationReader.GetConfigurationSection<RestConfig>("adminuser");
+
+            var client = new RestHelper(RestConfig.Url, RestConfig.Email, RestConfig.Password);
+            var responseGetProjects = client.DoRequest(Method.Get, "/projects.json", null);
+            var projects = JsonSerializer.Deserialize<IEnumerable<ProjectModel>>(responseGetProjects.Content!);
+        
+            foreach(var project in projects!)
+            {
+                string url = $"projects/{project.Id}.json";
+                var responseDelProjects = client.DoRequest(Method.Delete, url, null);
+                if(!responseDelProjects.IsSuccessful)
+                {
+                    throw new Exception($"Unable to Delete the Projects.");
+                }
+            }
+        }
     }
 }

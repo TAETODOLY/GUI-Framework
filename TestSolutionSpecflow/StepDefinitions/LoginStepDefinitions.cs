@@ -3,7 +3,6 @@ using NUnit.Framework;
 using TestSolution.Models;
 using TestSolution.PageObjects;
 using WebDriverProvider.Classes;
-using WebDriverProvider.Configurations;
 
 namespace TestSolution.StepDefinitions
 {
