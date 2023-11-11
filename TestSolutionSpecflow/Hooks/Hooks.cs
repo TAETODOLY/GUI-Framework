@@ -1,17 +1,23 @@
 ﻿using Allure.Net.Commons;
 using ConfigurationProvider.Classes;
+using Helpers.Classes;
 using WebDriverProvider.Classes;
+using GUITestSolution.Models;
 using WebDriverProvider.Configurations;
+using RestSharp;
 
 namespace TestSolution.Hooks
 {
     [Binding]
     public sealed class Hooks
     {
+        public readonly RestHelper client;
+        private readonly ScenarioContext _scenarioContext;
         private readonly string _webDriverConfigurationJson;
         public static AllureLifecycle allure = AllureLifecycle.Instance;
+        private const string _newUserDataJson = "//Configurations//RestHelperConfigurations.json";
 
-        public Hooks()
+        public Hooks(ScenarioContext scenarioContext)
         {
             if (Environment.GetEnvironmentVariable("GITHUB_ACTIONS") == "true")
             {
@@ -21,7 +27,41 @@ namespace TestSolution.Hooks
             {
                 _webDriverConfigurationJson = "Configurations//ChromeDriverConfiguration.json";
             }
+
+            var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _newUserDataJson);
+            var RestConfig = configurationReader.GetConfigurationSection<RestConfig>("adminuser");
+
+            client = new RestHelper(RestConfig.Url, RestConfig.Email, RestConfig.Password);
+            _scenarioContext = scenarioContext;
         }
+
+        [BeforeScenario(Order = 1)]
+        public void CreateProject()
+        {
+            var scenarioTags = _scenarioContext.ScenarioInfo.Tags.ToList();
+            scenarioTags = scenarioTags
+                .Where(tag => tag.StartsWith("create.project."))
+                .Select(tag => tag.Replace("create.project.", ""))
+                .ToList();
+
+            if (scenarioTags.Count.Equals(0))
+            {
+                return;
+            }
+
+            foreach (string tag in scenarioTags)
+            {
+                CreateProject(tag);
+            }
+        }
+
+        public void CreateProject(string tag)
+        {
+            string body = $"{{ \"Content\": \"{tag}\" }}";
+            var response = client.DoRequest(Method.Post, "/projects.json", body);
+            _scenarioContext["Current Project"] = response;
+        }
+
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
