@@ -1,5 +1,6 @@
 using ConfigurationProvider.Classes;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using TestSolution.Models;
 using TestSolution.PageObjects;
 using WebDriverProvider.Classes;
@@ -37,8 +38,11 @@ namespace TestSolution.StepDefinitions
         [Then(@"the user should be logged in")]
         public void ThenTheUserShouldBeOnPage()
         {
-            Assert.IsTrue(_mainPage.InMainPage());
+            By buttonSelector = By.XPath($"//a[@id='ctl00_HeaderTopControl1_LinkButtonLogout']");
+            Assert.IsTrue(_mainPage.elementIsDisplayed(buttonSelector));
         }
+
+
 
     }
 }

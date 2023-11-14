@@ -13,9 +13,5 @@ namespace TestSolution.PageObjects
             _driverFactory = driverFactory;
             _driver = _driverFactory.GetInstanceOf();
         }
-        public bool InMainPage()
-        {
-            return LogOutButtonDisplayed();
-        }
     }
 }
