@@ -30,5 +30,53 @@ namespace TestSolution.PageObjects
                 return false;
             }
         }
+        public void ClickAddNewProject()
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_addNewProjectButton, _driverFactory.Configuration.LongWait);
+                AddNewProjectButton.Click();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to click the Log Out Button. {e.Message}.", e.InnerException);
+            }
+        }
+        private void WriteProjectName(string projectName)
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_newProjectTextbox, _driverFactory.Configuration.LongWait);
+                NewProjectTextbox.SendKeys(projectName);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to write the prject name. {e.Message}.", e.InnerException);
+            }
+        }
+        private void ClickAddProject()
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_addNewProjectFinalButton, _driverFactory.Configuration.LongWait);
+                AddNewProjectFinalButton.Click();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to click the Add Project Button. {e.Message}.", e.InnerException);
+            }
+        }
+        private bool ProjectCreated(string projectName)
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_newProjectBox, _driverFactory.Configuration.LongWait);
+                return NewProjectBox.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
     }
 }
