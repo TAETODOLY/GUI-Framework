@@ -17,5 +17,14 @@ namespace TestSolution.PageObjects
         {
             return LogOutButtonDisplayed();
         }
+        public void CreateNewProject(string projectName)
+        {
+            WriteProjectName(projectName);
+            ClickAddProject();
+        }
+        public bool IsProjectCreated(string projectName)
+        {
+            return ProjectCreated(projectName);
+        }
     }
 }
