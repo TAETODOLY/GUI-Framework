@@ -60,7 +60,7 @@ namespace TestSolution.Hooks
         {
             string body = $"{{ \"Content\": \"{tag}\" }}";
             var response = client.DoRequest(Method.Post, "/projects.json", body);
-            _scenarioContext["Current Project"] = response;
+            _scenarioContext["Current Project"] = tag;
         }
 
         [BeforeTestRun]

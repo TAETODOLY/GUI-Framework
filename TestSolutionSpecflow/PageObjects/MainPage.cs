@@ -36,5 +36,9 @@ namespace TestSolution.PageObjects
         {
             return ItemCreated(itemName);
         }
+        public void SelectProject(string projectName)
+        {
+            ClickProject(projectName);
+        }
     }
 }

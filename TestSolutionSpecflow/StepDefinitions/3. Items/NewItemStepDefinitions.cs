@@ -27,6 +27,9 @@ namespace TestSolution.StepDefinitions
         [When(@"The user creates a new item named ""([^""]*)""")]
         public void WhenTheUserCreatesANewItemNamed(string itemName)
         {
+            var currentProject = _scenarioContext.Get<string>("Current Project");
+            _mainPage.SelectProject(currentProject);
+
             _scenarioContext["ItemName"] = itemName;
             _mainPage.CreateNewItem(itemName);
         }

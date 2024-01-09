@@ -80,24 +80,18 @@ namespace TestSolution.Features._3_Items
 #line 5
  testRunner.Given("the user logs in to the baseURL as \"adminuser\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 6
- testRunner.Given("The user clicks on \"Add New Project\" button in the left navigation bar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 7
- testRunner.When("The user creates a new project named \"Dinners\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Create a new item")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
+        [NUnit.Framework.CategoryAttribute("create.project.Errands")]
         public virtual void CreateANewItem()
         {
             string[] tagsOfScenario = new string[] {
-                    "tag1"};
+                    "create.project.Errands"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a new item", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 10
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -120,10 +114,10 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line hidden
-#line 11
+#line 9
  testRunner.Given("The user creates a new item named \"Pasta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 12
+#line 10
  testRunner.Then("The new item should be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
