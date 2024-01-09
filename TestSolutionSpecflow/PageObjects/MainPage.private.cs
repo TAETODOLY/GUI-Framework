@@ -78,5 +78,41 @@ namespace TestSolution.PageObjects
                 return false;
             }
         }
+        private void WriteItemName(string itemName)
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_newItemBox, _driverFactory.Configuration.LongWait);
+                NewItemBox.SendKeys(itemName);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to write the item name. {e.Message}.", e.InnerException);
+            }
+        }
+        private void ClickAddItem()
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_addNewItemFinalButton, _driverFactory.Configuration.LongWait);
+                AddNewItemButton.Click();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to click the Add Item Button. {e.Message}.", e.InnerException);
+            }
+        }
+        private bool ItemCreated(string itemName)
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_newItemBox, _driverFactory.Configuration.LongWait);
+                return NewItemBox.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
     }
 }

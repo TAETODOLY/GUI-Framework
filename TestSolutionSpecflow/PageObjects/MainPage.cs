@@ -26,5 +26,15 @@ namespace TestSolution.PageObjects
         {
             return ProjectCreated(projectName);
         }
+
+        public void CreateNewItem(string itemName)
+        {
+            WriteItemName(itemName);
+            ClickAddItem();
+        }
+        public bool IsItemCreated(string itemName)
+        {
+            return ItemCreated(itemName);
+        }
     }
 }
