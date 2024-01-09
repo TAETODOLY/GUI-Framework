@@ -11,6 +11,7 @@ namespace TestSolution.PageObjects
         private readonly By _newProjectBox = By.XPath("//td[@class='ProjItemContent' and text()='Errands']");
         private readonly By _newItemBox = By.XPath("//textarea[@class='InputTextAddItem InputTextAddItemWatermark']");
         private readonly By _addNewItemFinalButton = By.XPath("//input[@id='NewItemAddButton']");
+        private readonly By _newItem = By.XPath("//div[@class='ItemContentDiv' and text()='Pasta']");
 
 
 
@@ -23,6 +24,7 @@ namespace TestSolution.PageObjects
         private IWebElement NewProjectBox => _driver.FindElement(_newProjectBox);
         private IWebElement NewItemBox => _driver.FindElement(_newItemBox);
         private IWebElement AddNewItemButton => _driver.FindElement(_addNewItemFinalButton);
+        private IWebElement NewItem => _driver.FindElement(_newItem);
 
     }
 }

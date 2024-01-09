@@ -106,8 +106,8 @@ namespace TestSolution.PageObjects
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_newItemBox, _driverFactory.Configuration.LongWait);
-                return NewItemBox.Displayed;
+                _driverFactory.WaitFluentlyForElementToBeVisible(_newItem, _driverFactory.Configuration.LongWait);
+                return NewItem.Displayed;
             }
             catch (NoSuchElementException)
             {
