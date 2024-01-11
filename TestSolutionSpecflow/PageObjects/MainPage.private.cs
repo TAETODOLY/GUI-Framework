@@ -114,5 +114,17 @@ namespace TestSolution.PageObjects
                 return false;
             }
         }
+        private void ClickProject(string projectName)
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(_newProjectBox, _driverFactory.Configuration.LongWait);
+                NewProjectBox.Click();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to click the Add Item Button. {e.Message}.", e.InnerException);
+            }
+        }
     }
 }

@@ -1,32 +1,27 @@
-﻿using OpenQA.Selenium;
+﻿using ConfigurationProvider.Classes;
+using OpenQA.Selenium;
 using TestSolution.Models;
 using WebDriverProvider.Classes;
 
 namespace TestSolution.PageObjects
 {
-    public partial class LoginPage
+    [View("Login Page")]
+    public partial class LoginPage : BasePageObject
     {
-        private readonly WebDriverFactory _driverFactory;
-        private readonly IWebDriver _driver;
-        public LoginPage(WebDriverFactory driverFactory)
-        {
-            _driverFactory = driverFactory;
-            _driver = _driverFactory.GetInstanceOf();
-        }
+        public LoginPage(WebDriverFactory driverFactory) : base(driverFactory) { }
         public void RegisterUser(User user)
         {
             if (user is null)
                 throw new ArgumentNullException(nameof(user));
 
-            ClickSignUp();
+            //ClickSignUp();
         }
         public void LoginUser(User user)
         {
             if (user is null)
                 throw new ArgumentNullException(nameof(user));
 
-            ClickLogin();
-            LoginCredentials(user);
+            LoginWithCredentials(user);
         }
     }
 }

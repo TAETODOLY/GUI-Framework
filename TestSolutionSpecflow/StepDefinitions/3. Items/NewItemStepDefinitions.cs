@@ -23,10 +23,13 @@ namespace TestSolution.StepDefinitions
             _mainPage = new MainPage(_factory);
         }
 
-        [Given(@"The user creates a new item named ""([^""]*)""")]
-        [When(@"The user creates a new item named ""([^""]*)""")]
+        [Given(@"The user creates a new item named ""([^""]*)"" in the current project")]
+        [When(@"The user creates a new item named ""([^""]*)"" in the current project")]
         public void WhenTheUserCreatesANewItemNamed(string itemName)
         {
+            var currentProject = _scenarioContext.Get<string>("Current Project");
+            _mainPage.SelectProject(currentProject);
+
             _scenarioContext["ItemName"] = itemName;
             _mainPage.CreateNewItem(itemName);
         }
