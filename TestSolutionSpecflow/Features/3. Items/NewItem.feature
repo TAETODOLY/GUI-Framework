@@ -6,5 +6,5 @@ Background:
 
 @create.project.Errands
 Scenario: Create a new item
-	Given The user creates a new item named "Pasta"
+	Given The user creates a new item named "Pasta" in the current project
 	Then The new item should be created

@@ -4,15 +4,9 @@ using WebDriverProvider.Classes;
 
 namespace TestSolution.PageObjects
 {
-    public partial class MainPage
+    public partial class MainPage : BasePageObject
     {
-        private readonly WebDriverFactory _driverFactory;
-        private readonly IWebDriver _driver;
-        public MainPage(WebDriverFactory driverFactory)
-        {
-            _driverFactory = driverFactory;
-            _driver = _driverFactory.GetInstanceOf();
-        }
+        public MainPage(WebDriverFactory driverFactory) : base(driverFactory) { }
         public bool InMainPage()
         {
             return LogOutButtonDisplayed();

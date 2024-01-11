@@ -61,6 +61,12 @@ namespace TestSolution.Hooks
             string body = $"{{ \"Content\": \"{tag}\" }}";
             var response = client.DoRequest(Method.Post, "/projects.json", body);
             _scenarioContext["Current Project"] = tag;
+            _scenarioContext["My Name"] = "Felipe";
+            _scenarioContext["My age"] = 29;
+            _scenarioContext["My car"] = "Ram 700";
+            _scenarioContext["My pets"] = new List<string> { "dog 1", "dog 2", "cat 1"};
+
+            Console.WriteLine("");
         }
 
         [BeforeTestRun]

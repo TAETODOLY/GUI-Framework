@@ -1,19 +1,31 @@
-﻿using OpenQA.Selenium;
+﻿using ConfigurationProvider.Classes.Elements;
+using ConfigurationProvider.Classes;
+using ConfigurationProvider.Elements;
+using ConfigurationProvider.Enums;
+using OpenQA.Selenium;
 
 namespace TestSolution.PageObjects
 {
     public partial class LoginPage
     {
-        private readonly By _signUpButton = By.XPath("//img[@src='/Images/design/pagesignup.png']");
-        private readonly By _loginButton = By.XPath("//img[@src='/Images/design/pagelogin.png']");
-        private readonly By _emailTextBox = By.XPath("//input[@id='ctl00_MainContent_LoginControl1_TextBoxEmail']");
-        private readonly By _passwordTextBox = By.XPath("//input[@id='ctl00_MainContent_LoginControl1_TextBoxPassword']");
-        private readonly By _loginFinalButton = By.XPath("//input[@id='ctl00_MainContent_LoginControl1_ButtonLogin']");
+        [Element("SignUpButton", ElementType.Button)]
+        [Locator(LocatorType.XPath, "//img[@src='/Images/design/pagesignup.png']")]
+        public Button? SignUpButton { get; }
 
-        private IWebElement SignUpButton => _driver.FindElement(_signUpButton);
-        private IWebElement LoginButton => _driver.FindElement(_loginButton);
-        private IWebElement EmailTextBox => _driver.FindElement(_emailTextBox);
-        private IWebElement PasswordTextBox => _driver.FindElement(_passwordTextBox);
-        private IWebElement LoginFinalButton => _driver.FindElement(_loginFinalButton);
+        [Element("LoginButton", ElementType.Button)]
+        [Locator(LocatorType.XPath, "//img[@src='/Images/design/pagelogin.png']")]
+        public Button? LoginButton { get; }
+
+        [Element("EmailTextBox", ElementType.TextBox)]
+        [Locator(LocatorType.XPath, "//input[@id='ctl00_MainContent_LoginControl1_TextBoxEmail']")]
+        public TextBox? EmailTextBox { get; }
+
+        [Element("PasswordTextBox", ElementType.TextBox)]
+        [Locator(LocatorType.XPath, "//input[@id='ctl00_MainContent_LoginControl1_TextBoxPassword']")]
+        public TextBox? PasswordTextBox { get; }
+
+        [Element("LoginFinalButton", ElementType.Button)]
+        [Locator(LocatorType.XPath, "//input[@id='ctl00_MainContent_LoginControl1_ButtonLogin']")]
+        public Button? LoginFinalButton { get; }
     }
 }
