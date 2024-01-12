@@ -84,11 +84,11 @@ namespace TestSolution.Features._3_Items
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Create a new item")]
-        [NUnit.Framework.CategoryAttribute("create.project.Errands")]
+        [NUnit.Framework.CategoryAttribute("create.project.Homework")]
         public void CreateANewItem()
         {
             string[] tagsOfScenario = new string[] {
-                    "create.project.Errands"};
+                    "create.project.Homework"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a new item", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8
