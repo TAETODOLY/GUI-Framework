@@ -10,15 +10,14 @@ namespace TestSolution.PageObjects
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeClickable(_logOutButton, _driverFactory.Configuration.LongWait);
-                LogOutButton.Click();
+                ClickButton("LogOutButton","Main Page");
             }
             catch (Exception e)
             {
                 throw new Exception($"Unable to click the Log Out Button. {e.Message}.", e.InnerException);
             }
         }
-        private bool LogOutButtonDisplayed()
+        /*private bool LogOutButtonDisplayed()
         {
             try
             {
@@ -29,13 +28,12 @@ namespace TestSolution.PageObjects
             {
                 return false;
             }
-        }
+        } */
         public void ClickAddNewProject()
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_addNewProjectButton, _driverFactory.Configuration.LongWait);
-                AddNewProjectButton.Click();
+                ClickButton("AddNewProjectButton","Main Page");
             }
             catch (Exception e)
             {
@@ -46,8 +44,8 @@ namespace TestSolution.PageObjects
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_newProjectTextbox, _driverFactory.Configuration.LongWait);
-                NewProjectTextbox.SendKeys(projectName);
+                WriteInput("NewProjectTextbox", "Main Page", projectName);
+                
             }
             catch (Exception e)
             {
@@ -58,32 +56,29 @@ namespace TestSolution.PageObjects
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_addNewProjectFinalButton, _driverFactory.Configuration.LongWait);
-                AddNewProjectFinalButton.Click();
+                ClickButton("AddNewProjectFinalButton", "Main Page");
             }
             catch (Exception e)
             {
                 throw new Exception($"Unable to click the Add Project Button. {e.Message}.", e.InnerException);
             }
         }
-        private bool ProjectCreated(string projectName)
+        /*private bool ProjectCreated(string projectName)
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_newProjectBox, _driverFactory.Configuration.LongWait);
-                return NewProjectBox.Displayed;
+                ProjectCreated("NewProjectBox", "Main Page");
             }
             catch (NoSuchElementException)
             {
                 return false;
             }
-        }
+        }*/
         private void WriteItemName(string itemName)
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_newItemBox, _driverFactory.Configuration.LongWait);
-                NewItemBox.SendKeys(itemName);
+                WriteInput("NewItemBox", "Main Page", itemName);
             }
             catch (Exception e)
             {
@@ -94,15 +89,14 @@ namespace TestSolution.PageObjects
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_addNewItemFinalButton, _driverFactory.Configuration.LongWait);
-                AddNewItemButton.Click();
+                ClickButton("AddNewItemButton", "Main Page");
             }
             catch (Exception e)
             {
                 throw new Exception($"Unable to click the Add Item Button. {e.Message}.", e.InnerException);
             }
         }
-        private bool ItemCreated(string itemName)
+        /*private bool ItemCreated(string itemName)
         {
             try
             {
@@ -113,13 +107,12 @@ namespace TestSolution.PageObjects
             {
                 return false;
             }
-        }
+        }*/
         private void ClickProject(string projectName)
         {
             try
             {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_newProjectBox, _driverFactory.Configuration.LongWait);
-                NewProjectBox.Click();
+                ClickButton("ProjectBox", "Main Page", projectName);
             }
             catch (Exception e)
             {
