@@ -17,18 +17,7 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to click the Log Out Button. {e.Message}.", e.InnerException);
             }
         }
-        /*private bool LogOutButtonDisplayed()
-        {
-            try
-            {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_logOutButton, _driverFactory.Configuration.LongWait);
-                return LogOutButton.Displayed;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        } */
+        
         public void ClickAddNewProject()
         {
             try
@@ -63,17 +52,7 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to click the Add Project Button. {e.Message}.", e.InnerException);
             }
         }
-        /*private bool ProjectCreated(string projectName)
-        {
-            try
-            {
-                ProjectCreated("NewProjectBox", "Main Page");
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }*/
+        
         private void WriteItemName(string itemName)
         {
             try
@@ -96,18 +75,7 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to click the Add Item Button. {e.Message}.", e.InnerException);
             }
         }
-        /*private bool ItemCreated(string itemName)
-        {
-            try
-            {
-                _driverFactory.WaitFluentlyForElementToBeVisible(_newItem, _driverFactory.Configuration.LongWait);
-                return NewItem.Displayed;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }*/
+        
         private void ClickProject(string projectName)
         {
             try
@@ -116,7 +84,7 @@ namespace TestSolution.PageObjects
             }
             catch (Exception e)
             {
-                throw new Exception($"Unable to click the Add Item Button. {e.Message}.", e.InnerException);
+                throw new Exception($"Unable to click the find the project. {e.Message}.", e.InnerException);
             }
         }
     }

@@ -1,5 +1,7 @@
-﻿using ConfigurationProvider.Classes;
+﻿using AngleSharp.Dom;
+using ConfigurationProvider.Classes;
 using OpenQA.Selenium;
+using TechTalk.SpecFlow.Assist;
 using TestSolution.Models;
 using WebDriverProvider.Classes;
 
@@ -11,10 +13,10 @@ namespace TestSolution.PageObjects
     {
 
         public MainPage(WebDriverFactory driverFactory) : base(driverFactory) { }
-       /* public bool InMainPage()
+        public bool IsDisplayedInMainPage(string elementName)
         {
-            return LogOutButtonDisplayed();
-        }*/
+            return IsDisplayed(elementName, "Main Page");
+        }
         public void CreateNewProject(string projectName)
         {
             WriteProjectName(projectName);
@@ -22,8 +24,7 @@ namespace TestSolution.PageObjects
         }
         public bool IsProjectCreated(string projectName)
         {
-            //return ProjectCreated(projectName);
-            return true;
+            return IsDisplayed("ProjectBox", "Main Page", projectName);
         }
 
         public void CreateNewItem(string itemName)
@@ -33,8 +34,7 @@ namespace TestSolution.PageObjects
         }
         public bool IsItemCreated(string itemName)
         {
-            //return ItemCreated(itemName);
-            return true;
+            return IsDisplayed("ItemBox", "Main Page", itemName);
         }
         public void SelectProject(string projectName)
         {

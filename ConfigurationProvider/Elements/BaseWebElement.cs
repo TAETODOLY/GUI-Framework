@@ -49,5 +49,18 @@ namespace ConfigurationProvider.Classes.Elements
             _driverFactory.WaitFluentlyForElementToBeVisible(ConvertLocatorToBy(Locator), _driverFactory.Configuration.LongWait);
             return WebElement.GetAttribute("value");
         }
+        public bool Displayed()
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToBeVisible(ConvertLocatorToBy(Locator), _driverFactory.Configuration.LongWait);
+                return WebElement.Displayed;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
