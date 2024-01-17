@@ -36,7 +36,7 @@ namespace TestSolution.PageObjects
             }
             catch (Exception e)
             {
-                throw new Exception($"Unable to click the button. {e.Message}.", e.InnerException);
+                throw new Exception($"Unable to write the input. {e.Message}.", e.InnerException);
             }
         }
         public string ElementValue(string elementName, string pageView, string argument = "")
@@ -88,5 +88,20 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to set the value for {elementName}. {e.Message}.", e.InnerException);
             }
         }
+
+        public bool IsDisplayed(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                return _element.Displayed();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+        
+
     }
 }
