@@ -8,14 +8,14 @@ using WebDriverProvider.Classes;
 namespace TestSolution.StepDefinitions
 {
     [Binding]
-    public class NewItemStepDefinitions
+    public class ItemsStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
         private readonly WebDriverFactory _factory;
         private readonly LoginPage _loginPage;
         private readonly MainPage _mainPage;
 
-        public NewItemStepDefinitions(ScenarioContext scenarioContext)
+        public ItemsStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _factory = (WebDriverFactory)_scenarioContext["DriverFactory"];
@@ -32,6 +32,32 @@ namespace TestSolution.StepDefinitions
 
             _scenarioContext["ItemName"] = itemName;
             _mainPage.CreateNewItem(itemName);
+
+        }
+
+        [Given(@"The user opens the Options Menu in the ""([^""]*)"" item")]
+        public void GivenTheUserOpensTheOptionsMenuInTheItem(string current)
+        {
+            var currentProject = _scenarioContext.Get<string>("Current Project");
+            _mainPage.SelectProject(currentProject);
+
+            var currentItem = _scenarioContext.Get<string>("Current Item");
+            _mainPage.SelectItem(currentItem);
+
+            _mainPage.SelectItemOptionMenu(currentItem);
+
+        }
+
+        [When(@"The user select the ""([^""]*)"" option in the options menu")]
+        public void WhenTheUserSelectTheOptionInTheOptionsMenu(string delete)
+        {
+            throw new PendingStepException();
+        }
+
+        [Then(@"The item should be deleted")]
+        public void ThenTheItemShouldBeDeleted()
+        {
+            throw new PendingStepException();
         }
 
         [Then(@"The new item should be created")]
@@ -40,5 +66,7 @@ namespace TestSolution.StepDefinitions
             string itemName = _scenarioContext.Get<string>("ItemName");
             Assert.IsTrue(_mainPage.IsItemCreated(itemName));
         }
+
+
     }
 }

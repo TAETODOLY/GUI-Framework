@@ -87,5 +87,27 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to click the find the project. {e.Message}.", e.InnerException);
             }
         }
+        private void ClickItem(string itemName)
+        {
+            try
+            {
+                ClickButton("ItemBox", "Main Page", itemName);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the item. {e.Message}.", e.InnerException);
+            }
+        }
+        private void ClickOptionMenu(string itemName)
+        {
+            try
+            {
+                ClickButton("ItemOptionMenu", "Main Page", itemName);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the item. {e.Message}.", e.InnerException);
+            }
+        }
     }
 }

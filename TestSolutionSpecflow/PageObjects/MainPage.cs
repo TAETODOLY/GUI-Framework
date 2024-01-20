@@ -40,5 +40,15 @@ namespace TestSolution.PageObjects
         {
             ClickProject(projectName);
         }
+        public void SelectItem(string itemName)
+        {
+            ClickItem(itemName);
+        }
+        public void SelectItemOptionMenu(string itemName)
+        {
+            ClickOptionMenu(itemName);
+        }
+
+
     }
 }

@@ -36,10 +36,13 @@ namespace TestSolution.PageObjects
         [Locator(LocatorType.XPath, "//input[@id='NewItemAddButton']")]
         public Button? AddNewItemButton { get; }
 
-        [Element("ItemBox", ElementType.TextBox)]
+        [Element("ItemBox", ElementType.Button)]
         [Locator(LocatorType.XPath, "//div[@class='ItemContentDiv' and text()='{0}']")]
-        public TextBox? ItemBox { get; }
+        public Button? ItemBox { get; }
 
+        [Element("ItemOptionMenu", ElementType.Button)]
+        [Locator(LocatorType.XPath, "//*[@id=\"ItemId_11249648\"]/table/tbody/tr/td[4]/div/img")]
+        public Button? ItemOptionMenu { get; }
 
     }
 }
