@@ -41,7 +41,7 @@ namespace TestSolution.PageObjects
         public Button? ItemBox { get; }
 
         [Element("ItemOptionMenu", ElementType.Button)]
-        [Locator(LocatorType.XPath, "//*[@id=\"ItemId_11249648\"]/table/tbody/tr/td[4]/div/img")]
+        [Locator(LocatorType.XPath, "//li[.//div[@class='ItemContentDiv' and text()='{0}']]//img[@class='ItemMenu']")]
         public Button? ItemOptionMenu { get; }
 
     }
