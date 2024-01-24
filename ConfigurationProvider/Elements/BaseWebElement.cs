@@ -1,6 +1,7 @@
 ﻿using AngleSharp.Dom;
 using ConfigurationProvider.Enums;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using SeleniumExtras.WaitHelpers;
 using WebDriverProvider.Classes;
 using WebDriverProvider.Extensions;
@@ -61,6 +62,27 @@ namespace ConfigurationProvider.Classes.Elements
                 return false;
             }
         }
+        public bool Deleted()
+        {
+            try
+            {
+                _driverFactory.WaitFluentlyForElementToDisappear(ConvertLocatorToBy(Locator), _driverFactory.Configuration.ShortWait);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        public void Hover()
+        {
+            _driverFactory.WaitFluentlyForElementToBeVisible(ConvertLocatorToBy(Locator), _driverFactory.Configuration.LongWait);
+            Actions actions = new Actions(_driver);
+            actions.MoveToElement(WebElement).Perform();
+        }
+
 
     }
 }
