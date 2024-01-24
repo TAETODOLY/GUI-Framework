@@ -30,7 +30,7 @@ namespace TestSolution.StepDefinitions
             var currentProject = _scenarioContext.Get<string>("Current Project");
             _mainPage.SelectProject(currentProject);
 
-            _scenarioContext["ItemName"] = itemName;
+            _scenarioContext["Current Item"] = itemName;
             _mainPage.CreateNewItem(itemName);
 
         }
@@ -40,30 +40,31 @@ namespace TestSolution.StepDefinitions
         {
             var currentProject = _scenarioContext.Get<string>("Current Project");
             _mainPage.SelectProject(currentProject);
-
             var currentItem = _scenarioContext.Get<string>("Current Item");
-            _mainPage.SelectItem(currentItem);
-
-            _mainPage.SelectItemOptionMenu(currentItem);
+            _mainPage.ElementHover("ItemBox", "Main Page", currentItem);
+            _mainPage.SelectOptionMenu(currentItem);
 
         }
 
         [When(@"The user select the ""([^""]*)"" option in the options menu")]
-        public void WhenTheUserSelectTheOptionInTheOptionsMenu(string delete)
+        public void WhenTheUserSelectTheOptionInTheOptionsMenu(string selectedOption)
         {
-            throw new PendingStepException();
+            _mainPage.ClickButton("ItemOptions", "Main Page", selectedOption);
         }
 
         [Then(@"The item should be deleted")]
         public void ThenTheItemShouldBeDeleted()
         {
-            throw new PendingStepException();
+            var currentProject = _scenarioContext.Get<string>("Current Project");
+            _mainPage.SelectProject(currentProject);
+            string itemName = _scenarioContext.Get<string>("Current Item");
+            Assert.IsTrue(_mainPage.IsItemDeleted(itemName));
         }
 
         [Then(@"The new item should be created")]
         public void ThenTheNewItemShouldBeCreated()
         {
-            string itemName = _scenarioContext.Get<string>("ItemName");
+            string itemName = _scenarioContext.Get<string>("Current Item");
             Assert.IsTrue(_mainPage.IsItemCreated(itemName));
         }
 
