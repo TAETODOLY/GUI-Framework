@@ -40,5 +40,24 @@ namespace TestSolution.PageObjects
         {
             ClickProject(projectName);
         }
+        public void SelectOptionMenu(string itemName)
+        {
+            ClickOptionMenu(itemName);
+        }
+        public bool IsItemDisplayed(string itemName)
+        {
+            return IsDisplayed("ItemBox", "Main Page", itemName);
+        }
+        public bool IsItemDeleted(string itemName)
+        {
+            return IsDeleted("ItemBox", "Main Page", itemName);
+        }
+
+
+
+
+
+
+
     }
 }
