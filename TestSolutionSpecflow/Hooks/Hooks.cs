@@ -164,19 +164,6 @@ namespace TestSolution.Hooks
             var client = new RestHelper(RestConfig.Url, RestConfig.Email, RestConfig.Password);
             var responseGetItems = client.DoRequest(Method.Delete, "Filters/-4/Items.json", null);
 
-            /*var responseGetItems = client.DoRequest(Method.Get, "Projects/-3/ItemsWithInfo.json", null);
-            var items = JsonSerializer.Deserialize<IEnumerable<ProjectModel>>(responseGetItems.Content!);
-
-            foreach (var item in items!)
-            {
-                string url = $"Projects/-3/ItemsWithInfo/{item.Id}.json";
-                var responseDelItems = client.DoRequest(Method.Delete, url, null);
-                if (!responseDelItems.IsSuccessful)
-                {
-                    throw new Exception($"Unable to Delete the Items.");
-                }
-            }
-            */
         }
     }
 }
