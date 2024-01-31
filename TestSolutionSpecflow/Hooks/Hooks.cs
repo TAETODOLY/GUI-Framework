@@ -132,10 +132,11 @@ namespace TestSolution.Hooks
         [AfterTestRun]
         public static void CleanUp()
         {
-            RemoveAllprojects();
+            RemoveAllProjects();
+            RemoveAllItems();
         }
 
-        public static void RemoveAllprojects()
+        public static void RemoveAllProjects()
         {
             var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _newUserDataJson);
             var RestConfig = configurationReader.GetConfigurationSection<RestConfig>("adminuser");
@@ -153,6 +154,16 @@ namespace TestSolution.Hooks
                     throw new Exception($"Unable to Delete the Projects.");
                 }
             }
+        }
+
+        public static void RemoveAllItems()
+        {
+            var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _newUserDataJson);
+            var RestConfig = configurationReader.GetConfigurationSection<RestConfig>("adminuser");
+
+            var client = new RestHelper(RestConfig.Url, RestConfig.Email, RestConfig.Password);
+            var responseGetItems = client.DoRequest(Method.Delete, "Filters/-4/Items.json", null);
+
         }
     }
 }

@@ -15,3 +15,10 @@ Scenario: Delete an item
 	Given The user opens the Options Menu in the "current" item
 	When The user select the "Delete" option in the options menu
 	Then The item should be deleted
+
+@create.project.Homework
+@create.item.Programming
+Scenario: Set the priority of item
+	Given The user opens the Options Menu in the "current" item
+	When The user set the Priority of the item to "1" in the options menu
+	Then The item should set in the assigned priority
