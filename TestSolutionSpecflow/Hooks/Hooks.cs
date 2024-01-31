@@ -6,6 +6,7 @@ using WebDriverProvider.Configurations;
 using RestSharp;
 using TestSolution.Models;
 using System.Text.Json;
+using TechTalk.SpecFlow.Assist;
 
 namespace TestSolution.Hooks
 {
@@ -61,12 +62,39 @@ namespace TestSolution.Hooks
             string body = $"{{ \"Content\": \"{tag}\" }}";
             var response = client.DoRequest(Method.Post, "/projects.json", body);
             _scenarioContext["Current Project"] = tag;
-            _scenarioContext["My Name"] = "Felipe";
-            _scenarioContext["My age"] = 29;
-            _scenarioContext["My car"] = "Ram 700";
-            _scenarioContext["My pets"] = new List<string> { "dog 1", "dog 2", "cat 1"};
+        }
 
-            Console.WriteLine("");
+        [BeforeScenario(Order = 2)]
+        public void CreateItem()
+        {
+            var scenarioTags = _scenarioContext.ScenarioInfo.Tags.ToList();
+            scenarioTags = scenarioTags
+                .Where(tag => tag.StartsWith("create.item."))
+                .Select(tag => tag.Replace("create.item.", ""))
+                .ToList();
+
+            if (scenarioTags.Count.Equals(0))
+            {
+                return;
+            }
+
+            foreach (string tag in scenarioTags)
+            {
+                CreateItem(tag);
+            }
+        }
+
+        public void CreateItem(string tag)
+        {
+            string currentProject = _scenarioContext.Get<string>("Current Project");
+
+            var responseGetProjects = client.DoRequest(Method.Get, "/projects.json", null);
+            var projects = JsonSerializer.Deserialize<IEnumerable<ProjectModel>>(responseGetProjects.Content!);
+            var project = projects?.Where(project  => project.Content == currentProject).FirstOrDefault();
+
+            string body = $"{{ \"Content\": \"{tag}\", \"ProjectId\": {project?.Id} }}";
+            var response = client.DoRequest(Method.Post, "/items.json", body);
+            _scenarioContext["Current Item"] = tag;
         }
 
         [BeforeTestRun]
@@ -104,10 +132,11 @@ namespace TestSolution.Hooks
         [AfterTestRun]
         public static void CleanUp()
         {
-            RemoveAllprojects();
+            RemoveAllProjects();
+            RemoveAllItems();
         }
 
-        public static void RemoveAllprojects()
+        public static void RemoveAllProjects()
         {
             var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _newUserDataJson);
             var RestConfig = configurationReader.GetConfigurationSection<RestConfig>("adminuser");
@@ -125,6 +154,16 @@ namespace TestSolution.Hooks
                     throw new Exception($"Unable to Delete the Projects.");
                 }
             }
+        }
+
+        public static void RemoveAllItems()
+        {
+            var configurationReader = new ConfigurationReader(AppContext.BaseDirectory + _newUserDataJson);
+            var RestConfig = configurationReader.GetConfigurationSection<RestConfig>("adminuser");
+
+            var client = new RestHelper(RestConfig.Url, RestConfig.Email, RestConfig.Password);
+            var responseGetItems = client.DoRequest(Method.Delete, "Filters/-4/Items.json", null);
+
         }
     }
 }
