@@ -14,6 +14,7 @@ namespace TestSolution.StepDefinitions
         private readonly WebDriverFactory _factory;
         private readonly LoginPage _loginPage;
         private readonly MainPage _mainPage;
+        public readonly IWebDriver _driver;
 
         public ItemsStepDefinitions(ScenarioContext scenarioContext)
         {
@@ -52,6 +53,13 @@ namespace TestSolution.StepDefinitions
             _mainPage.ClickButton("ItemOptions", "Main Page", selectedOption);
         }
 
+        [When(@"The user set the Priority of the item to ""([^""]*)"" in the options menu")]
+        public void WhenTheUserSetThePriorityOfTheItemToInTheOptionsMenu(string priority)
+        {
+            _scenarioContext["Current Priority"] = priority;
+            _mainPage.ClickButton("PriorityOption", "Main Page", priority);
+        }
+
         [Then(@"The item should be deleted")]
         public void ThenTheItemShouldBeDeleted()
         {
@@ -68,6 +76,15 @@ namespace TestSolution.StepDefinitions
             Assert.IsTrue(_mainPage.IsItemCreated(itemName));
         }
 
+        [Then(@"The item should set in the assigned priority")]
+        public void ThenTheItemShouldSetInTheAssignedPriority()
+        {
+            string settedPriority = _scenarioContext.Get<string>("Current Priority");
+            string expectedColor = _mainPage.GetColorForPriority(settedPriority);
+            string itemName = _scenarioContext.Get<string>("Current Item");
+            string actualColor = _mainPage.ItemPriority(itemName);
 
+            Assert.AreEqual(expectedColor, actualColor, $"Item is not set to {settedPriority} priority");
+        }
     }
 }

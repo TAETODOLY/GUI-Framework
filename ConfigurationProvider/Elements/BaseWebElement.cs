@@ -83,6 +83,12 @@ namespace ConfigurationProvider.Classes.Elements
             actions.MoveToElement(WebElement).Perform();
         }
 
+        public string GetColor()
+        {
+            _driverFactory.WaitFluentlyForElementToBeVisible(ConvertLocatorToBy(Locator), _driverFactory.Configuration.LongWait);
+            return WebElement.GetCssValue("color");
+        }
+
 
     }
 }
