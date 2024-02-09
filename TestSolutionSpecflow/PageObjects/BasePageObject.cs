@@ -1,4 +1,5 @@
-﻿using ConfigurationProvider.Classes;
+﻿using AspectInjector.Broker;
+using ConfigurationProvider.Classes;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using WebDriverProvider.Classes;
@@ -126,6 +127,20 @@ namespace TestSolution.PageObjects
                 throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
             }
         }
+
+        public string AttributeValue(string elementName, string pageView, params string[] arguments)
+        {
+            try
+            {
+                var _element = UIElementFactory.GetPOElement(elementName, pageView, _driverFactory, arguments);
+                return _element.GetColor();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Unable to find the element {elementName}. {e.Message}.", e.InnerException);
+            }
+        }
+
 
     }
 }
