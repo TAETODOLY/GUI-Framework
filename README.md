@@ -77,3 +77,5 @@
 	        PUBLISH_BRANCH: gh-pages
 	        PUBLISH_DIR: allure-history
      ```
+     
+Be sure to have Read and write permissions on Workflow permissions in order to sucesfully deploy the report
