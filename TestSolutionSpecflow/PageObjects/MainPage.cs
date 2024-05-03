@@ -52,12 +52,25 @@ namespace TestSolution.PageObjects
         {
             return IsDeleted("ItemBox", "Main Page", itemName);
         }
-
-
-
-
-
-
-
+        public string GetColorForPriority(string settedPriority)
+        {
+            switch (settedPriority.ToLower())
+            {
+                case "1":
+                    return "rgba(255, 51, 0, 1)"; // Red color
+                case "2":
+                    return "rgba(22, 139, 184, 1)"; // Blue color
+                case "3":
+                    return "rgba(81, 153, 45, 1)"; // Green color
+                case "4":
+                    return "rgba(0, 0, 0 ,1)"; // Black color
+                default:
+                    throw new ArgumentException($"Invalid priority: {settedPriority}");
+            }
+        }
+        public string ItemPriority(string itemName)
+        {
+            return AttributeValue("ItemBox", "Main Page", itemName);
+        }
     }
 }

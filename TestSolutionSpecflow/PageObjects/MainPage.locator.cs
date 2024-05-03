@@ -48,7 +48,10 @@ namespace TestSolution.PageObjects
         [Locator(LocatorType.XPath, "//ul[@id='itemContextMenu']//li[a[text()='{0}']]")]
         public Button? ItemOptions { get; }
 
+        [Element("PriorityOption", ElementType.Button)]
+        [Locator(LocatorType.XPath, "//div[@class='PrioFrameOuter']//span[@iconid='{0}']")]
+        public Button? PriorityOption { get; }
 
-     
+        
     }
 }
